@@ -28,11 +28,13 @@ public class User {
     private Role role;
 
     @Builder
-    public User(Long id, String name, String email, Role role) {
+    public User(Long id, String name, String email, Role role,String picture) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.role = role;
+        this.picture = picture;
+
     }
 
     public User update(String name, String picture){
