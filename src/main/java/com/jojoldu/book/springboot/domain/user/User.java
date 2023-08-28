@@ -28,8 +28,7 @@ public class User {
     private Role role;
 
     @Builder
-    public User(Long id, String name, String email, Role role,String picture) {
-        this.id = id;
+    public User(String name, String email, Role role,String picture) {
         this.name = name;
         this.email = email;
         this.role = role;
@@ -45,6 +44,6 @@ public class User {
     }
 
     public String getRoleKey(){
-        return this.getRoleKey();
+        return this.role.getKey();
     }
 }
