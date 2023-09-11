@@ -1,5 +1,6 @@
 package com.jojoldu.book.springboot.web;
 
+import com.jojoldu.book.springboot.config.auth.LoginUser;
 import com.jojoldu.book.springboot.config.auth.dto.SessionUser;
 import com.jojoldu.book.springboot.service.posts.PostService;
 import com.jojoldu.book.springboot.web.dto.PostLIstResponseDto;
@@ -22,10 +23,8 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts",postService.findAllDesc());
-
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
         if(user!=null){
             model.addAttribute("userName",user.getName());
@@ -33,8 +32,8 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping("/post/save")
-    public String postSave(){
+    @GetMapping("/posts/save")
+    public String postsSave() {
         return "posts-save";
     }
 
